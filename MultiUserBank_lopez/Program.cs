@@ -21,9 +21,15 @@ namespace MultiUserBank_lopez
                     Console.WriteLine("Enter Password:");
                     string password = Console.ReadLine();
                     User user = bank.AuthenticateUser(username, password);
+
+                    //if user is not authenticated let them know otherwirse show their balance
                     if (user == null)
+                    {
                         Console.WriteLine("User not authorized");
-                    Console.WriteLine($"{user.Username}'s balance: {user.Balance.ToString("C")}" + Environment.NewLine);
+                        continue;
+                    }
+                    else
+                        Console.WriteLine($"{user.Username}'s balance: {user.Balance.ToString("C")}" + Environment.NewLine);
                 }
 
                 Console.WriteLine(bank.AvailableTransactions);
